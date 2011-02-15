@@ -1,0 +1,9 @@
+Make Projects:
+This is the Wii Motion Plus data reader and servo controller code for the Arduino platform.
+
+The i2c pins on the Arduino platform are Analog pin4 and Analog pin5.  
+SCL=A4 
+SDA=A5
+
+The Digital input for controlling the servers is on digital pin4 ana digital pin5
+
