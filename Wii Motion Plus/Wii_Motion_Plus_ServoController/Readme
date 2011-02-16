@@ -5,5 +5,8 @@ The i2c pins on the Arduino platform are Analog pin4 and Analog pin5.
 SCL=A4 
 SDA=A5
 
-The Digital input for controlling the servers is on digital pin4 ana digital pin5
+YawServo = D2
+PitchServo = D3
+
+The Digital input for controlling the servers is on digital pin2 and digital pin3
 
