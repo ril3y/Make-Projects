@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import serial
 from math import *
 from time import sleep
@@ -40,10 +42,10 @@ class wirebot(object):
         V3 = (  0,  12,  12)  #Rear Vertex
         
 
-        The above example assumes the vertices are all at the same height, but they don’t have to be. 
+        The above example assumes the vertices are all at the same height, but they donï¿½t have to be. 
         Just enter the actual height from the origin (Which is 0,0,0 Or the center of the triangle). The example also assumes that the rear vertex is 
-        half way between the left and right in X, but it doesn’t have to be.  The positions of the vertices
-        are somewhat arbitrary, assuming you don’t reduce the useful working volume too much.
+        half way between the left and right in X, but it doesnï¿½t have to be.  The positions of the vertices
+        are somewhat arbitrary, assuming you donï¿½t reduce the useful working volume too much.
         
         What does that mean?  It does not have to be a perfect equilateral triangle.  Or that each vertex does not need
         to be at the same height as the others.  However each "offset" will cut into your working volume area.
