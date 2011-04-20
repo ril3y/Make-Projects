@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="cp1252"?>
+<resource>
+  <object class="wxFrame" name="MainFrame">
+    <title>WireBotController</title>
+    <object class="wxPanel">
+      <object class="wxBoxSizer">
+        <orient>wxVERTICAL</orient>
+        <object class="sizeritem">
+          <object class="wxStaticBoxSizer">
+            <label>Controls</label>
+            <orient>wxHORIZONTAL</orient>
+            <object class="sizeritem">
+              <object class="wxGridSizer">
+                <cols>3</cols>
+                <rows>3</rows>
+                <object class="spacer">
+                  <size>0,0</size>
+                </object>
+                <object class="sizeritem">
+                  <object class="wxButton" name="btn_forward">
+                    <label>Forward</label>
+                  </object>
+                </object>
+                <object class="spacer">
+                  <size>0,0</size>
+                </object>
+                <object class="sizeritem">
+                  <object class="wxButton" name="btn_left">
+                    <label>Left</label>
+                  </object>
+                </object>
+                <object class="spacer">
+                  <size>0,0</size>
+                </object>
+                <object class="sizeritem">
+                  <object class="wxButton" name="btn_right">
+                    <label>Right</label>
+                  </object>
+                </object>
+                <object class="spacer">
+                  <size>0,0</size>
+                </object>
+                <object class="sizeritem">
+                  <object class="wxButton" name="btn_back">
+                    <label>Back</label>
+                  </object>
+                </object>
+                <object class="spacer">
+                  <size>0,0</size>
+                </object>
+              </object>
+            </object>
+            <object class="sizeritem">
+              <object class="wxGridSizer">
+                <cols>1</cols>
+                <rows>3</rows>
+                <object class="sizeritem">
+                  <object class="wxButton" name="btn_down">
+                    <label>Down</label>
+                  </object>
+                </object>
+                <object class="spacer">
+                  <size>0,0</size>
+                </object>
+                <object class="sizeritem">
+                  <object class="wxButton" name="btn_up">
+                    <label>Up</label>
+                  </object>
+                </object>
+              </object>
+              <flag>wxLEFT</flag>
+              <border>10</border>
+            </object>
+          </object>
+          <flag>wxEXPAND|wxGROW|wxALIGN_CENTRE|wxALIGN_CENTRE_VERTICAL|wxALIGN_CENTRE_HORIZONTAL</flag>
+        </object>
+        <object class="sizeritem">
+          <object class="wxStaticBoxSizer">
+            <label></label>
+            <orient>wxVERTICAL</orient>
+            <object class="sizeritem">
+              <object class="wxTextCtrl" name="debug">
+                <style>wxTE_MULTILINE|wxTE_READONLY|wxTE_WORDWRAP</style>
+              </object>
+              <flag>wxALL|wxEXPAND|wxGROW</flag>
+            </object>
+          </object>
+          <flag>wxALL|wxEXPAND|wxGROW|wxALIGN_CENTRE</flag>
+          <border>5</border>
+        </object>
+      </object>
+      <style></style>
+    </object>
+  </object>
+</resource>
