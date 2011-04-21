@@ -1,5 +1,3 @@
-#!/usr/bin/python
-
 import serial
 from math import *
 from time import sleep
@@ -42,10 +40,10 @@ class wirebot(object):
         V3 = (  0,  12,  12)  #Rear Vertex
         
 
-        The above example assumes the vertices are all at the same height, but they don�t have to be. 
+        The above example assumes the vertices are all at the same height, but they don’t have to be. 
         Just enter the actual height from the origin (Which is 0,0,0 Or the center of the triangle). The example also assumes that the rear vertex is 
-        half way between the left and right in X, but it doesn�t have to be.  The positions of the vertices
-        are somewhat arbitrary, assuming you don�t reduce the useful working volume too much.
+        half way between the left and right in X, but it doesn’t have to be.  The positions of the vertices
+        are somewhat arbitrary, assuming you don’t reduce the useful working volume too much.
         
         What does that mean?  It does not have to be a perfect equilateral triangle.  Or that each vertex does not need
         to be at the same height as the others.  However each "offset" will cut into your working volume area.
@@ -69,6 +67,16 @@ class wirebot(object):
         self.v3 =  (self.x3, self.y3, self.z3)
         
         v = 8
+        
+        self.circle = ["G21 G90 G64 G40",
+                       "G0 Z1.5",
+                       "G0 X-8.8769 Y5.0",
+                       "G1 F30.0 Z0.0",
+                       "G3 F300.0 X-15.0616 Y8.5707 I-4.1231 J0.0",
+                       "G3 Y1.4293 I2.0616 J-3.5707",
+                       "G3 X-8.8769 Y5.0 I2.0616 J3.5707",
+                       "G0 Z1.5"]
+
         self.CUBE = [ (-v,-v,v),
                       (v,-v,v),
                       (v,v,v),
@@ -79,25 +87,40 @@ class wirebot(object):
                       (-v,-v,-v),
                       (0,0,0) ]
         
+        self.INVERSE_TRIANGLE = [(-v,-v,v),
+                                 (0,0,0),
+                                 (v,-v,v),
+                                 (0,0,0),
+                                 (v,v,v),
+                                 (0,0,0),
+                                 (-v,v,v),
+                                 (0,0,0)]
+        
+        
+        self.VERT_SQUARE = [(-v,-v,v),
+                            (-v,-v,-v),
+                            (v,-v,-v),
+                            (v,-v,v),
+                            (-v,-v,v) ]
+       
+        
     def Zero(self):
         print("Zeroing Function Called")
         L1, L2, L3 = self.baseEQ(self.ZER0)
         
         print("G92 X%s Y%s Z%s\n" % (L1, L2, L3))
         self.s.writelines("G92 X%s Y%s Z%s\n" % (L1, L2, L3))
-        print "HI"
+       
         
-    def Cube(self):
-        value = self.Zero()
-        for coord in self.CUBE:
-            
+    
+    
+    def playShape(self, shape):
+        for coord in shape:
             value = self.baseEQ(coord)
             print ("Sending: G0 X%s Y%s Z%s\n" % (value[0],value[1],value[2]))
             self.s.writelines("G0 X%s Y%s Z%s\n" % (value[0],value[1],value[2]))
-            sleep(4)
+            sleep(3)
 
-        
-        
         
     def baseEQ(self, value):
         """L means string len"""
@@ -139,13 +162,19 @@ print "STARTING:"
     ##z.s.write("G1 F800 X%s Y%s Z%s\n" % (L1,L2,L3))
     #sleep(3)
 """
+
+
 z = wirebot()
 #L1, L2, L3 = z.baseEQ((0,0,0)) #Set our 0,0,0 through the BaseEQ function to our G92
+z.Zero()
+
 while(1):    
-    z.Cube()
+    
+    #z.playShape(z.INVERSE_TRIANGLE)
+    z.playShape(z.VERT_SQUARE)
 #z.s.writelines("G20\n")
 
-
+"""
 #while(1):
     #value = z.baseEQ((0,0,6))
     #print ("Sending: G0 X%s Y%s Z%s\n" % (value[0],value[1],value[2]))
@@ -156,4 +185,4 @@ while(1):
     #print ("Sending: G0 X%s Y%s Z%s\n" % (value[0],value[1],value[2]))
     #z.s.writelines("G0 X%s Y%s Z%s\n" % (value[0],value[1],value[2]))
     #sleep(2)
-    
+""" 
