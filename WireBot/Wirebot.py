@@ -1,4 +1,18 @@
 #!/usr/bin/python
+#Riley Porter
+#Synthetos.com
+
+"""Please read this file from top to bottom.. There are places where you will need to edit this file to match YOUR Wirebot configuration.
+The variables you need to set are:
+
+    PORT, V1, V2, V3
+
+Once you have this file all setup.  (Your vertices all set) then it will open the serial port that you specified and connect to the grblShield.  Once this is connected  the instructions being sent to your wirebot motors are a "configuration loop".  This means that all motors move your center object.  Ours was a ping pong ball up and down.. Forever... This is done to make sure that your machine is behaving correctly before trying any of the other pre-defined shapes.   Once you know your machine is functioning correctly (moving up and down) you can comment  out the code that calls the configurationLoop() function.  You can read more about how to do this at the bottom of the source code. 
+
+Lastly, should you want further explanation about how / why this code is the way it is be sure to check out the full technical write up at:
+https://www.synthetos.com/blog/grblshield-wirebot/
+
+ """
 try:    
     import serial, sys
 except:
@@ -15,6 +29,7 @@ class wirebot(object):
     def __init__(self):
         
         #Machine Specific
+        """ATTENTION SET THE PORT SETTING TO YOUR COMPUTERS PORT"""
         PORT = "COM30" #Set your serial port here.
         BAUD = 9600 #This should be 9600 unless you are using a custom grbl build.
         
@@ -204,14 +219,15 @@ class wirebot(object):
         return val.split(",")
     
 
-print "[*]Starting the Wirebot Controller:"
+
 if __name__ == "__main__":
+    print "[*]Starting the Wirebot Controller:"
     wb = wirebot()      #Creates a witebot object
-    wb.Zero()
-    wb.ConfigureLoop()  #Runs the configuration loop
+    wb.Zero()              #This will "zero" your wirebot machine.  Make sure your center object is in your desired (0,0,0) or origin.
+    wb.ConfigureLoop()  #Runs the configuration loop,  Comment this out by placing a # in front of it once you determine your machine is behaving correctly
     
     
     """Un-Comment this if you would like to continue to draw inverse triangles"""
     #while(1):
-    #    wb.playShape(wb.INVERSE_TRIANGLE)
+    #    wb.playShape(wb.INVERSE_TRIANGLE)  #You can change wb.INVERSE_TRIANGLE with any of the other shapes listed above.
         
