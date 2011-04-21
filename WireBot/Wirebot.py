@@ -62,21 +62,17 @@ class wirebot(object):
         self.y3 = 11.5
         self.z3 = 11.5
         
-        self.v1 =  (self.x1, self.y1, self.z1)
-        self.v2 =  (self.x2, self.y2, self.z2)
-        self.v3 =  (self.x3, self.y3, self.z3)
+       
         
+        self.v1 =  (self.x1, self.y1, self.z1) #Maps to Motor Port X
+        self.v2 =  (self.x2, self.y2, self.z2) #Maps to Motor Port Y
+        self.v3 =  (self.x3, self.y3, self.z3) #Maps to Motor Port Z
+        
+        #This is the lenght of movement in each shape
         v = 8
         
-        self.circle = ["G21 G90 G64 G40",
-                       "G0 Z1.5",
-                       "G0 X-8.8769 Y5.0",
-                       "G1 F30.0 Z0.0",
-                       "G3 F300.0 X-15.0616 Y8.5707 I-4.1231 J0.0",
-                       "G3 Y1.4293 I2.0616 J-3.5707",
-                       "G3 X-8.8769 Y5.0 I2.0616 J3.5707",
-                       "G0 Z1.5"]
 
+        #Shapes
         self.CUBE = [ (-v,-v,v),
                       (v,-v,v),
                       (v,v,v),
@@ -86,6 +82,12 @@ class wirebot(object):
                       (v,-v,-v),
                       (-v,-v,-v),
                       (0,0,0) ]
+        
+        self.LETTER_M =  [(0,0,v),
+                          (2,0,0),
+                          (4,0,8),
+                          (4,0,0)]
+                          
         
         self.INVERSE_TRIANGLE = [(-v,-v,v),
                                  (0,0,0),
@@ -102,19 +104,25 @@ class wirebot(object):
                             (v,-v,-v),
                             (v,-v,v),
                             (-v,-v,v) ]
+        
+        
        
         
     def Zero(self):
+        """This is the zeroing function.  This function
+        once ran, should return the length of line to (0,0,0) from each vertex"""
+        
         print("Zeroing Function Called")
         L1, L2, L3 = self.baseEQ(self.ZER0)
-        
+        self.s.writelines("G21\n")
+
         print("G92 X%s Y%s Z%s\n" % (L1, L2, L3))
         self.s.writelines("G92 X%s Y%s Z%s\n" % (L1, L2, L3))
        
-        
-    
     
     def playShape(self, shape):
+        """This takes a pattern and will play it on wirebot rig"""
+        
         for coord in shape:
             value = self.baseEQ(coord)
             print ("Sending: G0 X%s Y%s Z%s\n" % (value[0],value[1],value[2]))
@@ -133,7 +141,6 @@ class wirebot(object):
         lvalue.append(value[0])
         lvalue.append(value[1])
         lvalue.append(value[2])
-        #This for inverting Z 
         
         x,y,z = lvalue[0],lvalue[1],lvalue[2]
         
@@ -146,10 +153,6 @@ class wirebot(object):
         
         return val.split(",")
     
-        
-        
-COMMANDS = [(0,0,6),(5,5,5),(0,0,0)]
-
 
 print "STARTING:"
 
@@ -171,7 +174,7 @@ z.Zero()
 while(1):    
     
     #z.playShape(z.INVERSE_TRIANGLE)
-    z.playShape(z.VERT_SQUARE)
+    z.playShape(z.LETTER_M)
 #z.s.writelines("G20\n")
 
 """
