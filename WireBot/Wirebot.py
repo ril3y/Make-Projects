@@ -7,7 +7,12 @@ The variables you need to set are:
 
     PORT, V1, V2, V3
 
-Once you have this file all setup.  (Your vertices all set) then it will open the serial port that you specified and connect to the grblShield.  Once this is connected  the instructions being sent to your wirebot motors are a "configuration loop".  This means that all motors move your center object.  Ours was a ping pong ball up and down.. Forever... This is done to make sure that your machine is behaving correctly before trying any of the other pre-defined shapes.   Once you know your machine is functioning correctly (moving up and down) you can comment  out the code that calls the configurationLoop() function.  You can read more about how to do this at the bottom of the source code. 
+Once you have this file all setup.  (Your vertices all set) then it will open the serial port that you specified and connect to the grblShield.  
+Once this is connected  the instructions being sent to your wirebot motors are a "configuration loop".  
+This means that all motors move your center object.  Ours was a ping pong ball up and down.. Forever... This is done to make sure
+that your machine is behaving correctly before trying any of the other pre-defined shapes.   Once you know your machine is functioning 
+correctly (moving up and down) you can comment  out the code that calls the configurationLoop() function.  You can read more about 
+how to do this at the bottom of the source code. 
 
 Lastly, should you want further explanation about how / why this code is the way it is be sure to check out the full technical write up at:
 https://www.synthetos.com/blog/grblshield-wirebot/
