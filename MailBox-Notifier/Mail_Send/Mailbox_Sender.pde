@@ -2,7 +2,7 @@
 #include <stdlib.h> //Used for int to string
 //Remote Mailbox Code
 
-
+int TIMEOUT = 21600000;  //This is when, once your mail has been delivered your Arduino will start checking for mail again.
 int THRESHOLD = 800; //This should be set to whatever value is best for YOUR mailbox.
 //Experiment when this.  Set DEBUG to 1 and place the remote arduino into your mailbox.
 //Note the values you get when its open and when its closed.  Then set THRESHOLD to your desire.
@@ -49,7 +49,7 @@ void loop() {
            } 
       }
      send("Mail is here!");
-     delay(21600000);  //Delay 6 hours... Then start the whole thing over again... 
+     delay(TIMEOUT);  //Delay 6 hours... Then start the whole thing over again... 
    }    
   }
 
