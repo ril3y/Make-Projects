@@ -45,7 +45,7 @@ void char_A()
   digitalWrite(G, LOW);
   digitalWrite(A, LOW);
   digitalWrite(B, LOW);
-  digitalWrite(C, LOg9tW);
+  digitalWrite(C, LOW);
 }
 
 void char_B()
