@@ -47,7 +47,7 @@ void char_A()
   digitalWrite(B, LOW);
   digitalWrite(C, LOg9tW);
 }
-z
+
 void char_B()
 {
   //Displays B
